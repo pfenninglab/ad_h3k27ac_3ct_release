@@ -1,0 +1,24 @@
+#!/bin/bash
+
+#SBATCH -a 1-35
+#SBATCH -p pfen2
+#SBATCH -N 1
+#SBATCH -n 1
+
+#SBATCH --mem=10G
+
+MYID=$SLURM_ARRAY_TASK_ID
+
+PEAKPATH=/dlpfc/peaks/controls
+FULLBAMNAMES=dlpfc_controls_nodup_bam_file_names_full.txt
+BAMNAMES=dlpfc_controls_nodup_bam_file_names.txt
+
+FULLBAMNAME=$(awk "NR==${MYID}" $FULLBAMNAMES)
+BAMNAME=$(awk "NR==${MYID}" $BAMNAMES)
+
+ANNOTFILE=dlpfc_hpc_combined_set_combined_200_name.saf
+FEATURECOUNTS=/bin/featureCounts
+
+${FEATURECOUNTS} -F SAF -a ${ANNOTFILE} --readExtension3 1000 --readExtension5 1000 -o /counts/dlpfc_controls/${BAMNAME}.count.txt ${FULLBAMNAME}
+awk 'NR>1 {print $7}' /counts/dlpfc_controls/${BAMNAME}.count.txt > /counts/dlpfc_controls/${BAMNAME}.countSimp.txt
+

@@ -1,0 +1,46 @@
+#!/bin/bash
+
+#SBATCH -a 1-30
+#SBATCH -p pfen2
+#SBATCH -N 1
+#SBATCH -n 1
+
+#SBATCH --mem=10G
+
+PEAKPATH=/hpc/peaks/cases
+MYID=$((SLURM_ARRAY_TASK_ID-1))
+markers=(NeuN+ NeuN-_PU.1- PU.1+)
+celltypes=(Neuron Glia Microglia)
+
+ids=(7 8 9 10 11 12 13 14 15 16)
+
+num_cts=${#celltypes[@]}
+
+marker=${markers[$((MYID%num_cts))]}
+celltype=${celltypes[$((MYID%num_cts))]}
+id=${ids[$((MYID/num_cts))]}
+
+ANNOTFILE=dlpfc_hpc_combined_set_combined_200_name.saf
+FEATURECOUNTS=/bin/featureCounts
+
+if [ $id = 13 ] && [ $celltype = Glia ] 
+then
+  echo $id
+  echo $celltype
+  echo "IGNORED because peak file didn't pass pipeline error due to low RSC"
+elif [ $id = 16 ] && [ $celltype = Microglia ]
+then
+  echo $id
+  echo $celltype
+  echo "IGNORED because peak file didn't pass pipeline error due to low RSC"
+elif [ $id = 10 ] && [ $celltype = Microglia ]
+then
+  echo $id
+  echo $celltype
+  echo "IGNORED because peak file didn't pass pipeline error due to low RSC"
+else
+  ${FEATURECOUNTS} -F SAF -a ${ANNOTFILE} --readExtension3 1000 --readExtension5 1000 -o /counts/hpc_cases/H3K27ac_${marker}_${id}_hpc_1.count.txt ${PEAKPATH}/${id}/${celltype}/align/rep1/H3K27ac_${marker}_${id}_hpc_1.nodup.bam
+  ${FEATURECOUNTS} -F SAF -a ${ANNOTFILE} --readExtension3 1000 --readExtension5 1000 -o /counts/hpc_cases/H3K27ac_${marker}_${id}_hpc_2.count.txt ${PEAKPATH}/${id}/${celltype}/align/rep2/H3K27ac_${marker}_${id}_hpc_2.nodup.bam
+  awk 'NR>1 {print $7}' /counts/hpc_cases/H3K27ac_${marker}_${id}_hpc_1.count.txt > /counts/hpc_cases/H3K27ac_${marker}_${id}_hpc_1.countSimp.txt
+  awk 'NR>1 {print $7}' /counts/hpc_cases/H3K27ac_${marker}_${id}_hpc_2.count.txt > /counts/hpc_cases/H3K27ac_${marker}_${id}_hpc_2.countSimp.txt
+fi

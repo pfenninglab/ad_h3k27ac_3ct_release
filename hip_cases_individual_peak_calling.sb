@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#SBATCH -a 1-30
+#SBATCH -p pfen1
+#SBATCH -N 1
+#SBATCH -n 1
+
+#SBATCH --mem=40G
+#SBATCH -o /hpc/peaks/slurm.out.%A.%a.txt
+#SBATCH -e /hpc/peaks/slurm.err.%A.%a.txt
+
+
+FASTQPATH=/hpc/fastq/cases
+PEAKPATH=/hpc/peaks/cases
+CHIPSEQSCRIPT=/chipseq_pipeline/chipseq.py
+MYID=$((SLURM_ARRAY_TASK_ID-1))
+markers=(NeuN+ NeuN-_PU.1- PU.1+)
+celltypes=(Neuron Glia Microglia)
+ids=(7 8 9 10 11 12 13 14 15 16)
+
+num_cts=${#celltypes[@]}
+
+marker=${markers[$((MYID%num_cts))]}
+celltype=${celltypes[$((MYID%num_cts))]}
+id=${ids[$((MYID/num_cts))]}
+
+python ${CHIPSEQSCRIPT} -nth 1 --type histone --final-stage idr --title ${id}_${celltype} -no_jsd --species hg19 --fastq1 ${FASTQPATH}/${id}/H3K27ac_${marker}_${id}_hpc_1.fastq --fastq2 ${FASTQPATH}/${id}/H3K27ac_${marker}_${id}_hpc_2.fastq --ctl_fastq1 ${FASTQPATH}/${id}/Input_${marker}_${id}_hpc_1.fastq --ctl_fastq2 ${FASTQPATH}/${id}/Input_${marker}_${id}_hpc_2.fastq --out-dir ${PEAKPATH}/${id}/${celltype}/
+

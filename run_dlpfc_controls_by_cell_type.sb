@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#SBATCH -a 1-3
+#SBATCH -p pfen1
+#SBATCH -N 1
+#SBATCH -n 1
+
+#SBATCH --mem=20G
+#SBATCH -o /dlpfc/peaks/controls/slurm.out.%A.%a.txt
+#SBATCH -e /dlpfc/peaks/controls/slurm.err.%A.%a.txt
+
+
+cd $HOME
+
+MYFILE=dlpfc_controls_by_cell_type.sh
+MYID=$SLURM_ARRAY_TASK_ID
+
+command=$(awk "NR==${MYID}" $MYFILE)
+
+eval $command

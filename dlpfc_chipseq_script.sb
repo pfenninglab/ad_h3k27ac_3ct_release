@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#SBATCH -a 1-30
+#SBATCH -p pfen1
+#SBATCH -N 1
+#SBATCH -n 1
+
+#SBATCH --mem=20G
+#SBATCH -o /dlpfc/peaks/slurm.out.%A.%a.txt
+#SBATCH -e /dlpfc/peaks/slurm.err.%A.%a.txt
+
+cd $HOME
+
+MYFILE=dlpfc_chipseq_commands.sh
+MYID=$SLURM_ARRAY_TASK_ID
+
+command=$(awk "NR==${MYID}" $MYFILE)
+
+eval $command

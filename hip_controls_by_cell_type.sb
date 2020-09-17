@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#SBATCH -a 1-3
+#SBATCH -p pfen1
+#SBATCH -N 1
+#SBATCH -n 1
+
+#SBATCH --mem=20G
+#SBATCH -o /hpc/peaks/controls/slurm.out.%A.%a.txt
+#SBATCH -e /hpc/peaks/controls/slurm.err.%A.%a.txt
+
+FASTQPATH=/hpc/fastq/controls
+PEAKPATH=/hpc/peaks/controls
+CHIPSEQSCRIPT=/chipseq_pipeline/chipseq.py
+MYID=$((SLURM_ARRAY_TASK_ID-1))
+
+celltypes=(Neuron Glia Microglia)
+markers=(NeuN+ NeuN-_PU.1- PU.1+)
+
+
+ids=(1 2 3 4 5 6)
+
+celltype=${celltypes[$MYID]}
+marker=${markers[$MYID]}
+
+python ${CHIPSEQSCRIPT} -nth 1 --type histone --final-stage idr --title ${celltype} -no_jsd --species hg19 --tag1 ${PEAKPATH}/${ids[0]}/${celltype}/align/pooled_rep/H3K27ac_${marker}_${ids[0]}_hpc_1.nodup_H3K27ac_${marker}_${ids[0]}_hpc_2.nodup.tagAlign.gz --tag2 ${PEAKPATH}/${ids[1]}/${celltype}/align/pooled_rep/H3K27ac_${marker}_${ids[1]}_hpc_1.nodup_H3K27ac_${marker}_${ids[1]}_hpc_2.nodup.tagAlign.gz --tag3 ${PEAKPATH}/${ids[2]}/${celltype}/align/pooled_rep/H3K27ac_${marker}_${ids[2]}_hpc_1.nodup_H3K27ac_${marker}_${ids[2]}_hpc_2.nodup.tagAlign.gz --tag4 ${PEAKPATH}/${ids[3]}/${celltype}/align/pooled_rep/H3K27ac_${marker}_${ids[3]}_hpc_1.nodup_H3K27ac_${marker}_${ids[3]}_hpc_2.nodup.tagAlign.gz --tag5 ${PEAKPATH}/${ids[4]}/${celltype}/align/pooled_rep/H3K27ac_${marker}_${ids[4]}_hpc_1.nodup_H3K27ac_${marker}_${ids[4]}_hpc_2.nodup.tagAlign.gz --tag6 ${PEAKPATH}/${ids[5]}/${celltype}/align/pooled_rep/H3K27ac_${marker}_${ids[5]}_hpc_1.nodup_H3K27ac_${marker}_${ids[5]}_hpc_2.nodup.tagAlign.gz --ctl_tag1 ${PEAKPATH}/${ids[0]}/${celltype}/align/pooled_ctl/Input_${marker}_${ids[0]}_hpc_1.nodup_Input_${marker}_${ids[0]}_hpc_2.nodup.tagAlign.gz --ctl_tag2 ${PEAKPATH}/${ids[1]}/${celltype}/align/pooled_ctl/Input_${marker}_${ids[1]}_hpc_1.nodup_Input_${marker}_${ids[1]}_hpc_2.nodup.tagAlign.gz --ctl_tag3 ${PEAKPATH}/${ids[2]}/${celltype}/align/pooled_ctl/Input_${marker}_${ids[2]}_hpc_1.nodup_Input_${marker}_${ids[2]}_hpc_2.nodup.tagAlign.gz --ctl_tag4 ${PEAKPATH}/${ids[3]}/${celltype}/align/pooled_ctl/Input_${marker}_${ids[3]}_hpc_1.nodup_Input_${marker}_${ids[3]}_hpc_2.nodup.tagAlign.gz --ctl_tag5 ${PEAKPATH}/${ids[4]}/${celltype}/align/pooled_ctl/Input_${marker}_${ids[4]}_hpc_1.nodup_Input_${marker}_${ids[4]}_hpc_2.nodup.tagAlign.gz --ctl_tag6 ${PEAKPATH}/${ids[5]}/${celltype}/align/pooled_ctl/Input_${marker}_${ids[5]}_hpc_1.nodup_Input_${marker}_${ids[5]}_hpc_2.nodup.tagAlign.gz --out-dir ${PEAKPATH}/${celltype}
+
