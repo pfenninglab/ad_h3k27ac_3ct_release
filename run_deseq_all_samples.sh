@@ -56,3 +56,30 @@ Rscript run_deseq_all_samples.R -m /counts/all_samples.countSimp.no_header.txt -
 Rscript run_deseq_all_samples.R -m /counts/all_samples.countSimp.no_header.txt -i all_samples_extended_info.txt -p dlpfc_hpc_combined_set_combined_200_name.saf -d "binary_amyloid" -v binary_amyloid -u 1 -l 0 -c n -b d -o /deseq_analysis/binary_amyloid_deseq/neuron_dlpfc_binary_amyloid > /deseq_analysis/binary_amyloid_deseq/neuron_dlpfc_binary_amyloid.log
 Rscript run_deseq_all_samples.R -m /counts/all_samples.countSimp.no_header.txt -i all_samples_extended_info.txt -p dlpfc_hpc_combined_set_combined_200_name.saf -d "binary_amyloid" -v binary_amyloid -u 1 -l 0 -c nn -b d -o /deseq_analysis/binary_amyloid_deseq/non_neuron_dlpfc_binary_amyloid > /deseq_analysis/binary_amyloid_deseq/non_neuron_dlpfc_binary_amyloid.log
 Rscript run_deseq_all_samples.R -m /counts/all_samples.countSimp.no_header.txt -i all_samples_extended_info.txt -p dlpfc_hpc_combined_set_combined_200_name.saf -d "binary_amyloid" -v binary_amyloid -u 1 -l 0 -b d -o /deseq_analysis/binary_amyloid_deseq/allct_dlpfc_binary_amyloid > /deseq_analysis/binary_amyloid_deseq/allct_dlpfc_binary_amyloid.log
+
+# sex:Abeta interaction for hippocampus OEG samples
+Rscript run_deseq_all_samples.R -m all_samples.countSimp.no_header.txt -i all_samples_extended_info.txt -p dlpfc_hpc_combined_set_combined_200_name.saf -d "msex+binary_amyloid+msex:binary_amyloid" -v msex1.binary_amyloid1 -b h -c g -o /deseq_analysis/sex_amyloid_interaction_deseq/glia_hpc_sex_binary_amyloid_interaction > /deseq_analysis/sex_amyloid_interaction_deseq/glia_hpc_sex_binary_amyloid_interaction.log
+
+# covariates
+# educ
+Rscript run_deseq_all_samples.R -m all_samples.countSimp.no_header.txt -i all_samples_extended_info.txt -p dlpfc_hpc_combined_set_combined_200_name.saf -d "educ" -v educ -s 0 -b h -c g -o /deseq_analysis/educ_deseq/glia_hpc_sex_0_specific_educ > /deseq_analysis/educ_deseq/glia_hpc_sex_0_specific_educ.log
+Rscript run_deseq_all_samples.R -m all_samples.countSimp.no_header.txt -i all_samples_extended_info.txt -p dlpfc_hpc_combined_set_combined_200_name.saf -d "educ" -v educ -b d -c g -o /deseq_analysis/educ_deseq/glia_dlpfc_educ > /deseq_analysis/educ_deseq/glia_dlpfc_educ.log
+
+# age at death
+Rscript run_deseq_all_samples.R -m all_samples.countSimp.no_header.txt -i all_samples_extended_info.txt -p dlpfc_hpc_combined_set_combined_200_name.saf -d "age_death" -v age_death -s 0 -b h -c g -o /deseq_analysis/age_death_deseq/glia_hpc_sex_0_specific_age_death > /deseq_analysis/age_death_deseq/glia_hpc_sex_0_specific_age_death.log
+Rscript run_deseq_all_samples.R -m all_samples.countSimp.no_header.txt -i all_samples_extended_info.txt -p dlpfc_hpc_combined_set_combined_200_name.saf -d "age_death" -v age_death -b d -c g -o /deseq_analysis/age_death_deseq/glia_dlpfc_age_death > /deseq_analysis/age_death_deseq/glia_dlpfc_age_death.log
+
+
+# pmi
+Rscript run_deseq_all_samples.R -m all_samples.countSimp.no_header.txt -i all_samples_extended_info.txt -p dlpfc_hpc_combined_set_combined_200_name.saf -d "pmi" -v pmi -b d -c g -o /deseq_analysis/pmi_deseq/glia_dlpfc_pmi > /deseq_analysis/pmi_deseq/glia_dlpfc_pmi.log
+Rscript run_deseq_all_samples.R -m all_samples.countSimp.no_header.txt -i all_samples_extended_info.txt -p dlpfc_hpc_combined_set_combined_200_name.saf -d "pmi" -v pmi -s 0 -b h -c g -o /deseq_analysis/pmi_deseq/glia_hpc_sex_0_specific_pmi > /deseq_analysis/pmi_deseq/glia_hpc_sex_0_specific_pmi.log
+
+
+# rsc
+Rscript run_deseq_all_samples.R -m all_samples.countSimp.no_header.txt -i all_samples_extended_info.txt -p dlpfc_hpc_combined_set_combined_200_name.saf -d "rsc" -v rsc -b d -c g -o /deseq_analysis/rsc_deseq/glia_dlpfc_rsc > /deseq_analysis/rsc_deseq/glia_dlpfc_rsc.log
+Rscript run_deseq_all_samples.R -m all_samples.countSimp.no_header.txt -i all_samples_extended_info.txt -p dlpfc_hpc_combined_set_combined_200_name.saf -d "rsc" -v rsc -s 0 -b h -c g -o /deseq_analysis/rsc_deseq/glia_hpc_sex_0_specific_rsc > /deseq_analysis/rsc_deseq/glia_hpc_sex_0_specific_rsc.log
+
+# rsc + Abeta
+Rscript run_deseq_all_samples.R -m all_samples.countSimp.no_header.txt -i all_samples_extended_info.txt -p dlpfc_hpc_combined_set_combined_200_name.saf -d "rsc + binary_amyloid" -v binary_amyloid -u 1 -l 0 -b d -c g -o /deseq_analysis/rsc_deseq/glia_dlpfc_rsc_amyloid_amyloid_term > /deseq_analysis/rsc_deseq/glia_dlpfc_rsc_amyloid_amyloid_term.log
+Rscript run_deseq_all_samples.R -m all_samples.countSimp.no_header.txt -i all_samples_extended_info.txt -p dlpfc_hpc_combined_set_combined_200_name.saf -d "rsc + binary_amyloid" -v binary_amyloid -u 1 -l 0 -s 0 -b h -c g -o /deseq_analysis/rsc_deseq/glia_hpc_sex_0_specific_rsc_amyloid_amyloid_term > /deseq_analysis/rsc_deseq/glia_hpc_sex_0_specific_rsc_amyloid_amyloid_term.log
+
