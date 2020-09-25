@@ -260,7 +260,11 @@ habib_markers_disttss_filter_sample_level_analysis.ipynb
 
 ## Plotting peak specificity at individual AD risk loci
 
-TODO
+Run the following notebook (this will generate the plots in Figure 2c):
+
+```
+plot_ad_loci_peak_specificity.ipynb
+```
 
 ## Plotting distance to TSS of Abeta associated DARs
 
