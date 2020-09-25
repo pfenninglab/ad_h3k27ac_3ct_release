@@ -196,13 +196,9 @@ zcat /peaks/cell_type_peaks_hpc_dlpfc_reproducible/dlpfc_hpc_combined_controls_N
 source run_ldsc_cell_type_reproducible.sh
 ```
 
-## Permutation test analysis (is the code for this ok to release???)
+## Permutation test analysis
 
-TODO
-
-## Plotting GWAS enrichment results
-
-TODO
+Code for this analysis is available upon reasonable request
 
 ## HOMER annotation
 ```
