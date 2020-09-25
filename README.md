@@ -245,14 +245,14 @@ These will generate the plot in Supplementary Figure 6a in the main paper.
 
 ## Habib markers individual sample analysis
 
-Run the following notebooks in order:
+Run the following notebooks in order (this will generate the plot in Supplementary Figure 6c):
 
 ```
 habib_markers_sample_level_analysis_vst_R.ipynb
 habib_markers_sample_level_analysis.ipynb
 ```
 
-For the analysis where I filter by distance to TSS, run the following notebooks in order:
+For the analysis where I filter by distance to TSS, run the following notebooks in order (this will generate the plot in Figure 1c):
 ```
 habib_markers_disttss_filter_sample_level_analysis_vst_R.ipynb
 habib_markers_disttss_filter_sample_level_analysis.ipynb
