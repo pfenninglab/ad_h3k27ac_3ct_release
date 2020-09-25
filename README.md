@@ -245,7 +245,18 @@ These will generate the plot in Supplementary Figure 6a in the main paper.
 
 ## Habib markers individual sample analysis
 
-TODO
+Run the following notebooks in order:
+
+```
+habib_markers_sample_level_analysis_vst_R.ipynb
+habib_markers_sample_level_analysis.ipynb
+```
+
+For the analysis where I filter by distance to TSS, run the following notebooks in order:
+```
+habib_markers_disttss_filter_sample_level_analysis_vst_R.ipynb
+habib_markers_disttss_filter_sample_level_analysis.ipynb
+```
 
 ## Plotting peak specificity at individual AD risk loci
 
