@@ -5,7 +5,11 @@ This is a release repository for code accompanying the paper titled "Cell type-s
 
 ## Plotting sample info jitter plots and heatmap
 
-TODO
+Run the following notebook:
+
+```
+plot_all_sample_info_final.ipynb
+```
 
 ## Individual peak calling for all dlPFC and hippocampus samples using the AQUAS ChIP-seq workflow
 
