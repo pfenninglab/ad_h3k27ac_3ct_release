@@ -1,0 +1,19 @@
+central nervous system myelination	GO:0022010
+oligodendrocyte development	GO:0014003
+oligodendrocyte differentiation	GO:0048709
+macroautophagy	GO:0016236
+organelle disassembly	GO:1903008
+viral transcription	GO:0019083
+regulation of transcription elongation from RNA polymerase II promoter	GO:0034243
+mitotic nuclear envelope disassembly	GO:0007077
+negative regulation of mitochondrion organization	GO:0010823
+neurotransmitter secretion	GO:0007269
+trans-synaptic signaling	GO:0099537
+regulation of ion transport	GO:0043269
+positive regulation of immune system process	GO:0002684
+leukocyte activation	GO:0045321
+hemopoiesis	GO:0030097
+glial cell differentiation	GO:0010001
+glial cell development	GO:0021782
+myelination	GO:0042552
+Alzheimer's disease	KEGG_ALZHEIMERS_DISEASE 

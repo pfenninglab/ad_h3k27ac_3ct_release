@@ -168,6 +168,17 @@ source run_deseq_all_samples.sh
 ```
 The above shell script calls the DESeq2 wrapper script 59 different times with different arguments. In the first three calls, I call the wrapper to contrast cell types against each other to identify cell type-specific peaks for Neuron, Microglia, and Glia. In the next 45 commands, I identify amyloid beta correlated DARs in different brain regions, cell types and sexes by contrasting high Abeta samples against no Abeta samples. These 45 contrasts correspond to the contrasts defined in Figure 3 and Supplementary Table 4 of the main manuscript text. Further, in 1 of the calls, I run DESeq2 with the interaction term between sex and Abeta on OEG hippocampus samples to test whether the 1962 female hippocampus hypoacetylated DARs come up significant for the interaction term. Next, I conduct post-hoc analysis by correlating read counts with age at death, pmi, years of education, and with relative strand cross correlation for OEG female hippocampus samples and for OEG dlPFC samples. I also covary RSC and Abeta (RSC+Abeta) to see if effect sizes after controlling for RSC remain correlated with the orignal effect sizes for both OEG DAR sets.
 
+## Getting the set of all amyloid associated peaks
+
+```
+cat /deseq_analysis/binary_amyloid_deseq/*dlpfc*down.txt /deseq_analysis/binary_amyloid_deseq/*dlpfc*up.txt /deseq_analysis/binary_amyloid_deseq/*hpc*down.txt /deseq_analysis/binary_amyloid_deseq/*hpc*up.txt /deseq_analysis/sex_specific_amyloid_deseq/*hpc*down.txt /deseq_analysis/sex_specific_amyloid_deseq/*hpc*up.txt /deseq_analysis/sex_specific_amyloid_deseq/*dlpfc*down.txt /deseq_analysis/sex_specific_amyloid_deseq/*dlpfc*up.txt /deseq_analysis/binary_amyloid_deseq/*_all_*up.txt /deseq_analysis/binary_amyloid_deseq/*_all_*down.txt /deseq_analysis/sex_specific_amyloid_deseq/*_all_*up.txt /deseq_analysis/sex_specific_amyloid_deseq/*_all_*down.txt | awk -vFS='\t' '{print $1}' | sort | uniq > /deseq_analysis/all_amyloid_associated_peaks.txt
+```
+
+## Getting the set of amyloid associated peaks that are not part of two OEG DAR sets
+```
+cat /deseq_analysis/binary_amyloid_deseq/glia_dlpfc_binary_amyloid_up.txt /deseq_analysis/sex_specific_amyloid_deseq/glia_hpc_sex_0_specific_binary_amyloid_down.txt | awk -vFS='\t' '{print $1}' | sort | uniq | comm -13 - /deseq_analysis/all_amyloid_associated_peaks.txt > /deseq_analysis/amyloid_associated_peaks_without_two_big_sets.txt 
+```
+
 ## Calling cell type reproducible peaks
 I use the following script and command to call cell type reproducible peaks across both profiled brain regions by feeding in pooled alignments from hippocampus controls and dlPFC controls and assessing reproducibility between the two brain regions using the AQUAS ChIP-seq workflow.
 
@@ -309,6 +320,26 @@ Plotting these values (this will regenerate the plot in Figure 3d):
 python plot_disttss.py
 ```
 
+## GREAT Analysis
+The GREAT webserver (v4.0.4) was used to run & GO enrichment analyses for the following foregrounds:
+
+```
+/deseq_analysis/sex_specific_amyloid_deseq/glia_hpc_sex_0_specific_binary_amyloid_down.txt
+/deseq_analysis/binary_amyloid_deseq/glia_dlpfc_binary_amyloid_up.txt
+/deseq_analysis/amyloid_associated_peaks_without_two_big_sets.txt
+/deseq_analysis/all_amyloid_associated_peaks.txt"
+/deseq_analysis/cell_type_deseq/allbr_cell_type_effect_for_neuron_up.txt
+/deseq_analysis/cell_type_deseq/allbr_cell_type_effect_for_microglia_up.txt
+/deseq_analysis/cell_type_deseq/allbr_cell_type_effect_for_glia_up_full_brain_bg_Great_GO.txt
+```
+
+The full peak set in `dlpfc_hpc_combined_set_combined_200_name.bed` was used as the background for each of these analysis. The resulting tables were downloaded and the GO enrichment results were plotted using the following notebook (this will regenerate Figure 3e)
+
+```
+plot_GO_pathway_enrichment.ipynb
+```
+
+
 ## VST generation for full peak set for all samples
 
 TODO
@@ -321,9 +352,7 @@ TODO
 
 TODO
 
-## GO results plotting
 
-TODO
 
 ## snRNA-seq Mathys et al analysis
 
