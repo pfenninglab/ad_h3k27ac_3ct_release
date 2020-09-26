@@ -327,7 +327,7 @@ The GREAT webserver (v4.0.4) was used to run & GO enrichment analyses for the fo
 /deseq_analysis/sex_specific_amyloid_deseq/glia_hpc_sex_0_specific_binary_amyloid_down.txt
 /deseq_analysis/binary_amyloid_deseq/glia_dlpfc_binary_amyloid_up.txt
 /deseq_analysis/amyloid_associated_peaks_without_two_big_sets.txt
-/deseq_analysis/all_amyloid_associated_peaks.txt"
+/deseq_analysis/all_amyloid_associated_peaks.txt
 /deseq_analysis/cell_type_deseq/allbr_cell_type_effect_for_neuron_up.txt
 /deseq_analysis/cell_type_deseq/allbr_cell_type_effect_for_microglia_up.txt
 /deseq_analysis/cell_type_deseq/allbr_cell_type_effect_for_glia_up_full_brain_bg_Great_GO.txt
