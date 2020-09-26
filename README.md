@@ -268,7 +268,46 @@ plot_ad_loci_peak_specificity.ipynb
 
 ## Plotting distance to TSS of Abeta associated DARs
 
-TODO
+Getting number of peaks in different distance to TSS bins:
+
+```
+$ tail -n +2 /deseq_analysis/sex_specific_amyloid_deseq/glia_hpc_sex_0_specific_binary_amyloid_down_homer_gene_annot.txt | awk -vFS='\t' -vOFS='\t' '{if($10>-5000 && $10<5000) print $0}' | wc -l
+1604
+$ tail -n +2 /deseq_analysis/sex_specific_amyloid_deseq/glia_hpc_sex_0_specific_binary_amyloid_down_homer_gene_annot.txt | awk -vFS='\t' -vOFS='\t' '{if(($10>=5000 && $10<50000) || ($10<=-5000 && $10>-50000)) print $0}' | wc -l
+277
+$ tail -n +2 /deseq_analysis/sex_specific_amyloid_deseq/glia_hpc_sex_0_specific_binary_amyloid_down_homer_gene_annot.txt | awk -vFS='\t' -vOFS='\t' '{if(($10>=50000 && $10<500000) || ($10<=-50000 && $10>-500000)) print $0}' | wc -l
+81
+$ tail -n +2 /deseq_analysis/sex_specific_amyloid_deseq/glia_hpc_sex_0_specific_binary_amyloid_down_homer_gene_annot.txt | awk -vFS='\t' -vOFS='\t' '{if($10<=-5000000 && $10>=5000000) print $0}' | wc -l
+0
+```
+
+```
+$ tail -n +2 /deseq_analysis/binary_amyloid_deseq/glia_dlpfc_binary_amyloid_up_homer_gene_annot.txt | awk -vFS='\t' -vOFS='\t' '{if($10>-5000 && $10<5000) print $0}' | wc -l
+627
+$ tail -n +2 /deseq_analysis/binary_amyloid_deseq/glia_dlpfc_binary_amyloid_up_homer_gene_annot.txt | awk -vFS='\t' -vOFS='\t' '{if(($10>=5000 && $10<50000) || ($10<=-5000 && $10>-50000)) print $0}' | wc -l
+273
+$ tail -n +2 /deseq_analysis/binary_amyloid_deseq/glia_dlpfc_binary_amyloid_up_homer_gene_annot.txt | awk -vFS='\t' -vOFS='\t' '{if(($10>=50000 && $10<500000) || ($10<=-50000 && $10>-500000)) print $0}' | wc -l
+129
+$ tail -n +2 /deseq_analysis/binary_amyloid_deseq/glia_dlpfc_binary_amyloid_up_homer_gene_annot.txt | awk -vFS='\t' -vOFS='\t' '{if($10<=-5000000 && $10>=5000000) print $0}' | wc -l
+0
+```
+
+```
+$ tail -n +2 dlpfc_hpc_combined_set_combined_200_name_homer_gene_annot.txt | awk -vFS='\t' -vOFS='\t' '{if($10>-5000 && $10<5000) print $0}' | wc -l
+52231
+$ tail -n +2 dlpfc_hpc_combined_set_combined_200_name_homer_gene_annot.txt | awk -vFS='\t' -vOFS='\t' '{if(($10>=5000 && $10<50000) || ($10<=-5000 && $10>-50000)) print $0}' | wc -l
+175865
+$ tail -n +2 dlpfc_hpc_combined_set_combined_200_name_homer_gene_annot.txt | awk -vFS='\t' -vOFS='\t' '{if(($10>=50000 && $10<500000) || ($10<=-50000 && $10>-500000)) print $0}' | wc -l
+120305
+$ tail -n +2 dlpfc_hpc_combined_set_combined_200_name_homer_gene_annot.txt | awk -vFS='\t' -vOFS='\t' '{if($10<=-5000000 && $10>=5000000) print $0}' | wc -l
+0
+```
+
+Plotting these values (this will regenerate the plot in Figure 3d):
+
+```
+python plot_disttss.py
+```
 
 ## VST generation for full peak set for all samples
 
