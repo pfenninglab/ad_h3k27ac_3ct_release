@@ -161,12 +161,12 @@ Options:
 		Show this help message and exit
 ```
 
-## Cell type-specific hyperacetylated peaks and Abeta associated DAR calling
+## Cell type-specific hyperacetylated peaks, Abeta associated DAR calling, and age associated DAR calling
 
 ```
 source run_deseq_all_samples.sh
 ```
-The above shell script calls the DESeq2 wrapper script 59 different times with different arguments. In the first three calls, I call the wrapper to contrast cell types against each other to identify cell type-specific peaks for Neuron, Microglia, and Glia. In the next 45 commands, I identify amyloid beta correlated DARs in different brain regions, cell types and sexes by contrasting high Abeta samples against no Abeta samples. These 45 contrasts correspond to the contrasts defined in Figure 3 and Supplementary Table 4 of the main manuscript text. Further, in 1 of the calls, I run DESeq2 with the interaction term between sex and Abeta on OEG hippocampus samples to test whether the 1962 female hippocampus hypoacetylated DARs come up significant for the interaction term. Next, I conduct post-hoc analysis by correlating read counts with age at death, pmi, years of education, and with relative strand cross correlation for OEG female hippocampus samples and for OEG dlPFC samples. I also covary RSC and Abeta (RSC+Abeta) to see if effect sizes after controlling for RSC remain correlated with the orignal effect sizes for both OEG DAR sets.
+The above shell script calls the DESeq2 wrapper script 69 different times with different arguments. In the first 9 calls, I call the wrapper to contrast cell types against each other to identify cell type-specific peaks for Neuron, Microglia, and Glia in both brain regions, hippocampus separately, and dlPFC separately. In the next 45 commands, I identify amyloid beta correlated DARs in different brain regions, cell types and sexes by contrasting high Abeta samples against no Abeta samples. These 45 contrasts correspond to the contrasts defined in Figure 3 and Supplementary Table 4 of the main manuscript text. Further, in 1 of the calls, I run DESeq2 with the interaction term between sex and Abeta on OEG hippocampus samples to test whether the 1962 female hippocampus hypoacetylated DARs come up significant for the interaction term. Next, I conduct post-hoc analysis by correlating read counts with age at death, pmi, years of education, and with relative strand cross correlation for OEG female hippocampus samples and for OEG dlPFC samples. I also covary RSC and Abeta (RSC+Abeta) to see if effect sizes after controlling for RSC remain correlated with the orignal effect sizes for both OEG DAR sets. This script also identifies the age associated DARs in individual cell types. Code for the rest of Abeta associated DAR analysis is provided here. Code for the rest of age associated DAR analysis can be made available upon reasonable request. 
 
 ## Getting the set of all amyloid associated peaks
 
