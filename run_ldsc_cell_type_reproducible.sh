@@ -16,7 +16,7 @@ do
     
     # annot for background peaks
     python /ldsc/make_annot.py --bed-file dlpfc_hpc_combined_controls_cell_type_reproducible.bed --bimfile /resources/1000G_EUR_Phase3_plink/1000G.EUR.QC.${i}.bim --annot-file /ldsc_analysis/dlpfc_hpc_combined_controls_cell_type_set.${i}.annot
-    python /ldsc/ldsc.py --l2 --bfile /home/eramamur/resources/1000G_EUR_Phase3_plink/1000G.EUR.QC.${i} --ld-wind-cm 1 --annot /ldsc_analysis/dlpfc_hpc_combined_controls_cell_type_set.${i}.annot --thin-annot --out /ldsc_analysis/dlpfc_hpc_combined_controls_cell_type_set.${i} --print-snps /resources/hapmap3_snps/hm.${i}.snp
+    python /ldsc/ldsc.py --l2 --bfile /resources/1000G_EUR_Phase3_plink/1000G.EUR.QC.${i} --ld-wind-cm 1 --annot /ldsc_analysis/dlpfc_hpc_combined_controls_cell_type_set.${i}.annot --thin-annot --out /ldsc_analysis/dlpfc_hpc_combined_controls_cell_type_set.${i} --print-snps /resources/hapmap3_snps/hm.${i}.snp
     
 done
 
