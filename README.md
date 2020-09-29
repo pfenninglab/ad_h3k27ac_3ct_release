@@ -348,12 +348,17 @@ Run this notebook:
 compute_vst.ipynb
 ```
 
-## VST generation for hippocampus OEG samples, dlPFC OEG samples, and heatmap generation
+## VST generation for hippocampus OEG samples, female hippocampus OEG samples, dlPFC OEG samples, and heatmap generation
 
 Run this notebook for hippocampus OEG samples (this will also generate the plot in Figure 3b):
 
 ```
 compute_vst_glia_hpc.ipynb
+```
+
+Run this notebook for female hippocampus OEG samples
+```
+compute_vst_glia_hpc_sex_0.ipynb
 ```
 
 Run this notebook for dlPFC OEG samples (this will also generate the plot in Figure 3c):
@@ -364,9 +369,18 @@ compute_vst_glia_dlpfc.ipynb
 
 ## Post-hoc analysis, box plots of covariates
 
-TODO
+For OEG female hippocampus box plots, run the following notebook after running `compute_vst_glia_hpc_sex_0.ipynb` notebook (this will generate the box plots in Supplementary Figure 9)
+
+```
+plot_hpc_glia_sex_0_covariates.ipynb
+```
 
 
+For OEG dlPFC box plots, run the following notebook after running `compute_vst_glia_dlpfc.ipynb` notebook (this will generate the box plots in Supplementary Figure 10)
+
+```
+plot_dlpfc_glia_covariates.ipynb
+```
 
 ## snRNA-seq Mathys et al analysis
 
