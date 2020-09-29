@@ -406,7 +406,42 @@ plot_dlpfc_snrna_genes.ipynb
 
 ## Averaging bigwigs
 
-TODO
+I wrote some bedtools + awk commands to average bigwig signal tracks for H3K27ac across different groups of samples. These can be found by running the following script:
+
+```
+source average_bigwigs.sh
+```
+
+It will create 13 averaged bigwig files which are listed below.
+
+The following 3 files were used to generate Figure 1b
+1. Neuron (all samples)
+1. Microglia (all samples)
+1. OEG (all samples)
+
+The following 3 files were used to generate Figure 2d-f.
+
+1. Neuron (all samples without amyloid)
+1. Microglia (all samples without amyloid)
+1. OEG (all samples with amyloid)
+
+The following 3 files were generated to create a resource.
+
+1. Neuron (all samples with amyloid)
+1. Microglia (all samples with amyloid)
+1. OEG (all samples with amyloid)
+
+The following 2 files were used in generating Figure 4a-i and Supplementary Figure 12.
+
+1. OEG (female hippocampus samples with amyloid)
+1. OEG (female hippocampues samples without amyloid)
+
+The following 2 files were generated to create a resource and to compare against the female data.
+
+1. OEG (male hippocampus samples with amyloid)
+1. OEG (male hippocampues samples without amyloid)
+
+These files are also provided in a UCSC browser hub at: http://daphne.compbio.cs.cmu.edu/files/eramamur/ad_h3k27ac_3ct_data_resource/hub.txt
 
 ## pyGenomeTracks visualizations for Abeta associated DARs
 
