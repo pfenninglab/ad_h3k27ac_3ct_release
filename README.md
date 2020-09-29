@@ -445,7 +445,17 @@ These files are also provided in a UCSC browser hub at: http://daphne.compbio.cs
 
 ## pyGenomeTracks visualizations for Abeta associated DARs
 
-TODO
+I wrote the following scripts to generate genome browser visualization for the Abeta associated DARs in OEG at interesting loci. Running the following script will generate the visualizations in Figure 4a-i and Supplementary Figure 12.
+
+```
+source generate_genome_tracks.sh
+```
+
+Before running this script, I preprocessed the UCSC known genes data to generate the gene track. Briefly, I downloaded the genes file in .txt format from the UCSC table browser and then wrote a script to converted it to bed12 format. Below is the associated command to generate this track.
+
+```
+python convert_ucsc_table_to_bed_12_format.py | gzip > ucsc_table_browser_ucsc_known_genes_all_genes.bed.gz
+```
 
 # Misc
 

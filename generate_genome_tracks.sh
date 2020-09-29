@@ -1,0 +1,15 @@
+pyGenomeTracks --tracks track_config_4.ini --region chr1:161,150,000-161,180,000 --outFileName adamts4_image.png
+pyGenomeTracks --tracks track_config_3.ini --region chr8:27,034,350-27,255,896 --outFileName stmn4_image.png
+pyGenomeTracks --tracks track_config_1.ini --region chr16:77,249,770-77,563,640 --outFileName adamts18_image.png
+pyGenomeTracks --tracks track_config_4.ini --region chr15:58,908,375-59,086,459 --outFileName adam10_image.png
+pyGenomeTracks --tracks track_config_4.ini --region chr21:27,235,410-27,569,793 --outFileName app_image.png
+pyGenomeTracks --tracks track_config_4.ini --region chr14:73,593,644-73,686,869 --outFileName psen1_image.png
+pyGenomeTracks --tracks track_config_2.ini --region chr1:226,938,093-227,103,047 --outFileName psen2_image.png
+pyGenomeTracks --tracks track_config_4.ini --region chr2:127,714,059-127,925,262 --outFileName bin1_image.png
+pyGenomeTracks --tracks track_config_3.ini --region chr11:85,639,487-85,866,679 --outFileName picalm_image.png
+pyGenomeTracks --tracks track_config_3.ini --region chr11:121,238,994-121,648,083 --outFileName sorl1_image.png
+pyGenomeTracks --tracks track_config_2.ini --region chr14:53,284,000-53,470,452 --outFileName fermt2_image.png
+pyGenomeTracks --tracks track_config_4.ini --region chr8:27,396,768-27,523,875 --outFileName clu_image.png
+pyGenomeTracks --tracks track_config_4.ini --region chr11:117,134,921-117,252,165 --outFileName bace1_image.png
+pyGenomeTracks --tracks track_config_3.ini --region chr17:43,827,865-44,109,917 --outFileName mapt_image.png
+pyGenomeTracks --tracks track_config_4.ini --region chr11:61,505,730-61,564,351 --outFileName myrf_image.png
