@@ -342,11 +342,25 @@ plot_GO_pathway_enrichment.ipynb
 
 ## VST generation for full peak set for all samples
 
-TODO
+Run this notebook:
 
-## VST generation for female hippocampus OEG, male hippocampus OEG, and dlPFC OEG samples
+```
+compute_vst.ipynb
+```
 
-TODO
+## VST generation for hippocampus OEG samples, dlPFC OEG samples, and heatmap generation
+
+Run this notebook for hippocampus OEG samples (this will also generate the plot in Figure 3b):
+
+```
+compute_vst_glia_hpc.ipynb
+```
+
+Run this notebook for dlPFC OEG samples (this will also generate the plot in Figure 3c):
+
+```
+compute_vst_glia_dlpfc.ipynb
+```
 
 ## Post-hoc analysis, box plots of covariates
 
