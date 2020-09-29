@@ -350,7 +350,7 @@ plot_GO_pathway_enrichment.ipynb
 
 ## VST generation for full peak set for all samples
 
-Run this notebook:
+Run this notebook (this will also generate the plots in Supplementary Figure 5 of the top two principal components colored by amyloid, sex, brain region, and cell type):
 
 ```
 compute_vst.ipynb
