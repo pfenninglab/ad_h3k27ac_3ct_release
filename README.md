@@ -384,7 +384,17 @@ plot_dlpfc_glia_covariates.ipynb
 
 ## snRNA-seq Mathys et al analysis
 
-TODO
+Run the following notebook (this will generate the violin plots in the left panel of Figure 4k)
+
+```
+compare_rosmap_snrna_dlpfc_up_oli.ipynb
+```
+
+The following notebook will plot the individual log2fc values for interesting gene candidates (right panel of Figure 4k)
+
+```
+plot_dlpfc_snrna_genes.ipynb
+```
 
 ## Averaging bigwigs
 
