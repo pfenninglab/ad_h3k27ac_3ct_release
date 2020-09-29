@@ -179,6 +179,14 @@ cat /deseq_analysis/binary_amyloid_deseq/*dlpfc*down.txt /deseq_analysis/binary_
 cat /deseq_analysis/binary_amyloid_deseq/glia_dlpfc_binary_amyloid_up.txt /deseq_analysis/sex_specific_amyloid_deseq/glia_hpc_sex_0_specific_binary_amyloid_down.txt | awk -vFS='\t' '{print $1}' | sort | uniq | comm -13 - /deseq_analysis/all_amyloid_associated_peaks.txt > /deseq_analysis/amyloid_associated_peaks_without_two_big_sets.txt 
 ```
 
+## Plotting heatmap of number of DARs in each brain region, sex and cell type
+
+Run the following notebook (this will generate the plot in Figure 3a)
+
+```
+plot_deseq_results_table.ipynb
+```
+
 ## Calling cell type reproducible peaks
 I use the following script and command to call cell type reproducible peaks across both profiled brain regions by feeding in pooled alignments from hippocampus controls and dlPFC controls and assessing reproducibility between the two brain regions using the AQUAS ChIP-seq workflow.
 
